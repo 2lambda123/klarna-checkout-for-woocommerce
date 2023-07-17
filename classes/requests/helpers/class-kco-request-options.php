@@ -39,6 +39,7 @@ class KCO_Request_Options {
 			'require_client_validation_callback_response' => 'redirect' === $checkout_flow ? false : true,
 			'phone_mandatory'                             => 'required' === get_option( 'woocommerce_checkout_phone_field', 'required' ),
 			'show_subtotal_detail'                        => $this->show_subtotal_detail( $checkout_flow ),
+			'show_vat_registration_number_field'          => true,
 		);
 
 		if ( $this->get_iframe_colors() ) {

@@ -58,6 +58,13 @@ class KCO_Request_Create extends KCO_Request {
 			),
 		);
 
+		if ( $request_body['options']['show_vat_registration_number_field'] ) {
+			$vat_number = get_user_meta( get_current_user_id(), 'vat_number', true );
+			if ( 0 < get_current_user_id() && ! empty( $vat_number ) ) {
+				$request_body['customer']['vat_id'] = $vat_number;
+			}
+		}
+
 		if ( empty( $order_id ) ) {
 			// If no order id, get order data from the cart.
 			$cart_data = new KCO_Request_Cart();
